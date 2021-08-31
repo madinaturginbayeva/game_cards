@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>game</title>
+    <link rel="stylesheet" href="css/style2.css">
+</head>
+<body>
+    <div class="container">
+        <div class="container">
+            <div class="card ">
+                <div class="back" id="circle">circle</div>
+                <div class="back" id="box">box</div>
+                <div class="back" id="square">square</div>
+                <div class="back" id="circle">circle</div>
+                <div class="back" id="cube">cube</div>
+                <div class="back" id="square">square</div>
+                <div class="back" id="box">box</div>
+                <div class="back" id="cube">cube</div>
+            </div>
+        </div>
+        <div class="card showcd">
+            <div class="front card_star ">найди пару</div>
+            <div class="front card_star ">найди пару</div>
+            <div class="front card_circle ">найди пару</div>
+            <div class="front card_circle ">найди пару</div>
+            <div class="front card_piramyde ">найди пару</div>
+            <div class="front card_piramyde ">найди пару</div>
+            <div class="front card_square ">найди пару</div>
+            <div class="front card_square ">найди пару</div>
+        </div>
+    </div>
+    
+    
+    
+        
+        <script>
+            let cards = document.querySelectorAll('.front');
+            let hidden_cards = document.querySelectorAll('.back');
+            
+            let correct=false;
+            let wrongs=[];
+            let arr=[];
+            let preview = 0;
+            for( let i = 0; i < cards.length; i++){
+                
+                cards[i].addEventListener('click', function func(){
+                    
+                    cards[i].classList.add('anim');
+                    hidden_cards[i].classList.add('anim2');
+
+                    let first=hidden_cards[i].innerHTML;
+                    
+                    arr.push(first);
+                    if (arr.length==2 && arr[0]==arr[1]){
+                        let choose = document.querySelectorAll('#'+arr[0]);
+                        choose[0].style.backgroundColor='green';
+                        choose[1].style.backgroundColor='green';
+                        arr=[];
+                        console.log(choose);
+                    }
+                    else if (arr.length==2 && arr[0]!=arr[1]){
+                        
+                        setTimeout(function(){
+                            cards[i].classList.remove('anim');
+                            hidden_cards[i].classList.remove('anim2');
+
+                            cards[preview].classList.remove('anim');
+                            hidden_cards[preview].classList.remove('anim2');
+
+                            arr=[];
+                            
+                    },2000);       
+                        
+
+                    }
+                    setTimeout(function(){
+                    preview=i;
+                }, 2100);
+                        
+                });
+                
+            }
+                
+            
+            
+            
+        </script>
+    </div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+* {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+.card{
+    display:flex;
+    flex-wrap: wrap;
+    width: 1000px;
+    margin:150px 0 0 300px;
+    position: absolute;
+    
+}
+
+.front,
+.back{
+    height: 130px;
+    min-width: 150px;
+    background-color: wheat;
+    margin: 30px;
+    border-radius: 15px;
+    text-align: center;
+    padding-top:100px;
+    font-weight: bold;
+    perspective: 1000px;
+    transition:1s;
+    /* transition-delay: 3s; */
+    /* backface-visibility: hidden; */
+}
+
+.back{
+    transform:rotateY(-180deg);
+    /* background-color: black; */
+    color:white;
+}
+.anim{
+    backface-visibility:hidden;
+    transform:rotateY(180deg);
+}
+.anim2{
+    transform:rotateY(0deg);
+}
